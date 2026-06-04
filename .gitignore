@@ -2,6 +2,11 @@
 node_modules/
 package-lock.json
 
+# Firebase
+.firebase/
+firebase-debug.log
+*-firebase-adminsdk-*.json
+
 # Build / working artifacts from the Figma extraction
 _figma_full.json
 _figma_depth*.json
