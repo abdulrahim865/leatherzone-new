@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "v1-leatherzone"
+  },
+  "targets": {
+    "v1-leatherzone": {
+      "hosting": {
+        "v2-leatherzone": [
+          "v2-leatherzone"
+        ]
+      }
+    }
+  }
+}

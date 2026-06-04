@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "site": "v2-leatherzone",
+    "public": "site",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
