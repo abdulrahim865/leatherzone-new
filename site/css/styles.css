@@ -65,7 +65,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 .nav__link {
   font-size: 16px;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: uppercase;
   letter-spacing: .2px;
   color: var(--ink);
   white-space: nowrap;
@@ -125,7 +125,8 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 
 /* lead paragraph that sits below hero */
 .lead {
-  max-width: 1469px; margin: 96px auto; text-align: center;
+  max-width: calc(var(--maxw) + var(--gutter) * 2);
+  margin: 96px auto; padding: 0 var(--gutter); text-align: center;
   font-family: var(--body); font-weight: 500;
   font-size: clamp(22px, 2.4vw, 45px); line-height: 1.2; color: var(--muted);
 }
@@ -252,7 +253,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   box-shadow: 0 6px 20px rgba(0,0,0,.05);
   display: flex; flex-direction: column; gap: 18px;
 }
-.review__google { height: 32px; width: auto; }
+.review__google { height: 32px; width: fit-content; max-width: fit-content; }
 .review__stars { color: #ffc107; font-size: 16px; letter-spacing: 2px; }
 .review p { font-size: 16px; line-height: 1.5; color: var(--muted2); margin: 0; flex: 1; }
 .review__person { display: flex; align-items: center; gap: 12px; }
@@ -365,7 +366,6 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
    ============================================================ */
 @media (max-width: 1100px) {
   .nav__group--right, .nav__group--left .nav__link { display: none; }
-  .nav__toggle { display: block; }
   .nav__cta { display: none; }
   .logos { grid-template-columns: repeat(4,1fr); }
   .cards-row { grid-template-columns: repeat(3,1fr); }
