@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build / working artifacts from the Figma extraction
+_figma_full.json
+_figma_depth*.json
+_img_fills.json
+_img_urls.json
+_map.json
+_renamed.json
+_parse.mjs
+_extract.mjs
+_download.mjs
+_rename.mjs
+_optimize.mjs
+ref/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

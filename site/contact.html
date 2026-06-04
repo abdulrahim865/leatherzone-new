@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Leather Zone Upholstery LLC, Dubai</title>
+<meta name="description" content="From a single chair to a full hotel reupholster — drop us a note about your project and we will reply the same day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav__group nav__group--left">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.add('open')"><span></span><span></span><span></span><span></span></button>
+        <a href="index.html" class="nav__link">MENU</a>
+        <a href="about.html" class="nav__link">about us</a>
+        <a href="services.html" class="nav__link">services</a>
+      </div>
+      <a href="index.html" class="nav__logo-wrap"><img class="nav__logo" src="assets/img/logo.png" alt="Leather Zone"></a>
+      <div class="nav__group nav__group--right">
+        <a href="projects.html" class="nav__link">INDUSTRIES</a>
+        <a href="projects.html" class="nav__link">PROJECTS</a>
+        <a href="contact.html" class="nav__cta">START YOUR PROJECTS <span class="circle">&rarr;</span></a>
+      </div>
+      <button class="nav__toggle" aria-label="Open menu" onclick="document.querySelector('.mobile-menu').classList.add('open')"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero hero--short" style="background-image:url('assets/img/hero-contact.jpg');align-items:center">
+  <div class="container hero__inner" style="padding-bottom:0;text-align:right">
+    <h1 style="max-width:586px;margin-left:auto">We'd love to<br>hear from you</h1>
+  </div>
+</section>
+
+<p class="lead lead--sm">From a single chair to a full hotel reupholster — drop us a note about your project and we will reply the same day.</p>
+
+<!-- CONTACT CARD -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="contact-card">
+      <aside class="contact-info">
+        <div>
+          <h3>Contact Information</h3>
+          <p class="muted">Say something to start a live chat!</p>
+        </div>
+        <ul>
+          <li><span class="ic">&#9742;</span> +1012 3456 789</li>
+          <li><span class="ic">&#9993;</span> demo@gmail.com</li>
+          <li><span class="ic">&#9873;</span> 132 Dartmouth Street, Boston, Massachusetts 02156, United States</li>
+        </ul>
+        <div class="socials" style="margin-top:auto">
+          <a href="#">𝕏</a><a href="#">⌾</a><a href="#">✈</a><a href="#">f</a>
+        </div>
+      </aside>
+      <form class="contact-form">
+        <div class="field"><label>First Name</label><input type="text" placeholder="" name="first"></div>
+        <div class="field"><label>Last Name</label><input type="text" placeholder="Doe" name="last"></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="" name="email"></div>
+        <div class="field"><label>Phone Number</label><input type="tel" placeholder="+1 012 3456 789" name="phone"></div>
+        <div class="field field--full">
+          <label>Select Subject?</label>
+          <div style="display:flex;gap:26px;flex-wrap:wrap;margin-top:6px;font-size:13px">
+            <label style="display:flex;gap:8px;align-items:center;color:#000"><input type="radio" name="subject" checked> General Inquiry</label>
+            <label style="display:flex;gap:8px;align-items:center;color:#000"><input type="radio" name="subject"> General Inquiry</label>
+            <label style="display:flex;gap:8px;align-items:center;color:#000"><input type="radio" name="subject"> General Inquiry</label>
+            <label style="display:flex;gap:8px;align-items:center;color:#000"><input type="radio" name="subject"> General Inquiry</label>
+          </div>
+        </div>
+        <div class="field field--full"><label>Message</label><textarea rows="3" placeholder="Write your message.." name="message"></textarea></div>
+        <div class="submit"><button type="submit">Send Message</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <img src="assets/img/contact-map.png" alt="Workshop location map" style="width:100%;border-radius:12px">
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__top"><h2>Ready to start your next project?</h2><a href="contact.html"><strong>Talk to an Expert</strong></a></div>
+    <nav class="footer__nav">
+      <a href="index.html">home</a><a href="about.html">about us</a><a href="services.html">services</a>
+      <a href="projects.html">project</a><a href="blog.html">blog</a><a href="contact.html">contacts</a>
+    </nav>
+    <div class="footer__bottom">
+      <a class="footer__call" href="tel:+97100000000">CALL US</a>
+      <div class="socials"><a href="#">𝕏</a><a href="#">⌾</a><a href="#">✈</a><a href="#">f</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-menu"><div class="mobile-menu__panel">
+  <button class="mobile-menu__close" aria-label="Close">&times;</button>
+  <a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a>
+  <a href="projects.html">Projects</a><a href="blog.html">Blog</a><a href="contact.html">Contacts</a>
+</div></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
