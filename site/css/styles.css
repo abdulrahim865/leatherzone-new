@@ -50,9 +50,15 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 
 /* ---------- Header ---------- */
 .site-header {
-  position: relative;
+  position: fixed;
+  top: 0; left: 0; right: 0;
   z-index: 50;
-  background: var(--bg);
+  background: transparent;
+  transition: background .35s ease, box-shadow .35s ease;
+}
+.site-header.scrolled {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
 }
 .nav {
   display: flex;
@@ -67,18 +73,22 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .2px;
-  color: var(--ink);
+  color: #fff;
   white-space: nowrap;
   transition: color .2s;
 }
 .nav__link:hover { color: var(--accent); }
+/* Scrolled (white bar) → dark text */
+.site-header.scrolled .nav__link { color: var(--ink); }
+.site-header.scrolled .hamburger span,
+.site-header.scrolled .nav__toggle span { background: var(--ink); }
 .nav__logo { height: 50px; width: auto; margin: 0 auto; }
 .nav__logo-wrap { flex: 1; display: flex; justify-content: center; }
 .hamburger {
   display: inline-flex; flex-direction: column; gap: 4px;
   width: 24px; cursor: pointer; background: none; border: 0; padding: 0;
 }
-.hamburger span { height: 2px; background: var(--ink); border-radius: 2px; }
+.hamburger span { height: 2px; background: #fff; border-radius: 2px; }
 .nav__cta {
   display: inline-flex; align-items: center; gap: 14px;
   background: var(--accent); color: #fff;
@@ -99,7 +109,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 1056px;
+  min-height: 100vh;
   display: flex;
   align-items: flex-end;
   color: #fff;

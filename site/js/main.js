@@ -1,5 +1,16 @@
 // Leather Zone — minimal interactivity
 (function () {
+  // Sticky header: transparent over hero, white background once scrolled
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onScroll = function () {
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
   // Mobile menu toggle
   var toggle = document.querySelector('.nav__toggle');
   var menu = document.querySelector('.mobile-menu');
