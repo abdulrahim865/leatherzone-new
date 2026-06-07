@@ -1,5 +1,7 @@
 // Leather Zone — minimal interactivity
 (function () {
+  document.documentElement.classList.add('js');
+
   // Sticky header: transparent over hero, white background once scrolled
   var header = document.querySelector('.site-header');
   if (header) {
@@ -21,6 +23,48 @@
         menu.classList.remove('open');
       }
     });
+  }
+
+  // Projects horizontal gallery — "next" button scrolls one card width
+  var track = document.getElementById('projTrack');
+  var next = document.getElementById('projNext');
+  if (track && next) {
+    var animateScroll = function (el, to, ms) {
+      var start = el.scrollLeft, change = to - start, t0 = null;
+      var max = el.scrollWidth - el.clientWidth;
+      to = Math.max(0, Math.min(to, max));
+      change = to - start;
+      var ease = function (p) { return p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p; };
+      var step = function (ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / ms);
+        el.scrollLeft = start + change * ease(p);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    next.addEventListener('click', function () {
+      var card = track.querySelector('.proj-card, .proj-intro');
+      var step = card ? Math.round(card.getBoundingClientRect().width) + 28 : track.clientWidth * 0.8;
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+      animateScroll(track, atEnd ? 0 : track.scrollLeft + step, 450);
+    });
+  }
+
+  // Reveal-on-scroll
+  var reveals = document.querySelectorAll('.reveal');
+  var revealAll = function () { reveals.forEach(function (el) { el.classList.add('in'); }); };
+  if (reveals.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+    // Safety net: never leave content hidden if IO fails to fire
+    setTimeout(revealAll, 2500);
+  } else {
+    revealAll();
   }
 
   // Contact form (demo — no backend)

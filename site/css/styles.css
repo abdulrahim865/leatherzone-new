@@ -121,12 +121,15 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: rgba(0,0,0,.40);
 }
-/* Background video (Vimeo) — fills the hero, sits behind the overlay */
-.hero__video { position: absolute; inset: 0; z-index: 0; background: #1a1a1a; }
+/* Background video (Vimeo) — covers the hero (crop, never letterbox) */
+.hero__video { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1a1a1a; }
 .hero__video iframe {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; border: 0;
-  pointer-events: none; display: block;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  /* 16:9 sized to always cover the viewport in both axes */
+  width: 100vw; height: 56.25vw;
+  min-width: 177.78vh; min-height: 100vh;
+  border: 0; pointer-events: none; display: block;
 }
 .hero__inner { position: relative; z-index: 2; padding-bottom: 110px; width: 100%; }
 .hero h1 {
@@ -378,6 +381,133 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 .mobile-menu.open .mobile-menu__panel { transform: translateX(0); }
 .mobile-menu__panel a { font-size: 18px; font-weight: 500; text-transform: uppercase; letter-spacing: .5px; }
 .mobile-menu__close { align-self: flex-end; background: none; border: 0; font-size: 28px; cursor: pointer; }
+
+/* ============================================================
+   Smooth hover animations
+   ============================================================ */
+.svc-card, .cat-card, .stat, .review {
+  transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease;
+  will-change: transform;
+}
+.svc-card:hover, .cat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 50px rgba(0,0,0,.14);
+}
+.stat:hover, .review:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+/* image zoom inside cards */
+.svc-card, .cat-card, .split__media, .gallery3 img, .proj-card { overflow: hidden; }
+.svc-card__img, .cat-card img, .split__media img, .gallery3 a > img,
+.proj-card__img {
+  transition: transform .6s cubic-bezier(.2,.7,.3,1);
+}
+.svc-card:hover .svc-card__img,
+.cat-card:hover img,
+.proj-card:hover .proj-card__img { transform: scale(1.07); }
+.gallery3 img { transition: transform .6s cubic-bezier(.2,.7,.3,1); }
+.gallery3 img:hover { transform: scale(1.05); }
+
+/* links + nav underline grow */
+.footer__nav a { position: relative; }
+.footer__nav a::after {
+  content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 0;
+  background: currentColor; transition: width .3s ease;
+}
+.footer__nav a:hover::after { width: 100%; }
+
+/* pill arrow nudges on hover */
+.pill .dot, .nav__cta .circle { transition: transform .3s ease; }
+.pill:hover .dot, .nav__cta:hover .circle { transform: translateX(4px); }
+
+/* social icons */
+.socials a { transition: transform .25s ease, background .25s ease; }
+.socials a:hover { transform: translateY(-3px); }
+
+/* reveal on scroll (only hides when JS is active, so no-JS keeps content visible) */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  * { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   Projects — full-screen horizontal scroll gallery
+   ============================================================ */
+.proj-scroll {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  padding: 120px 0 80px;
+}
+.proj-track {
+  display: flex;
+  gap: 28px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-left: var(--gutter);
+  padding: 10px var(--gutter) 28px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+.proj-track::-webkit-scrollbar { height: 8px; }
+.proj-track::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; }
+.proj-track::-webkit-scrollbar-track { background: transparent; }
+.proj-track > * { scroll-snap-align: start; flex: 0 0 auto; }
+
+.proj-intro {
+  width: min(86vw, 520px);
+  align-self: stretch;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  padding: clamp(32px, 4vw, 56px);
+  display: flex; flex-direction: column; justify-content: center; gap: 22px;
+}
+.proj-intro h2 { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 3vw, 45px); line-height: 1.08; }
+.proj-intro p { font-size: 18px; line-height: 1.6; margin: 0; color: rgba(255,255,255,.92); }
+.proj-intro .pill { background: #fff; color: var(--gray); align-self: flex-start; }
+.proj-intro .pill .dot { background: var(--accent); color: #fff; }
+
+.proj-card {
+  width: min(78vw, 440px);
+  background: #fff;
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease;
+}
+.proj-card:hover { transform: translateY(-8px); box-shadow: 0 24px 54px rgba(0,0,0,.16); }
+.proj-card__media { position: relative; overflow: hidden; border-radius: 12px 12px 0 0; }
+.proj-card__img { width: 100%; height: min(62vh, 560px); object-fit: cover; display: block; }
+.proj-card__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 24px;
+}
+.proj-card__bar h3 { font-family: "Segoe UI", var(--body); font-weight: 600; font-size: 22px; line-height: 1.2; }
+.proj-card__add {
+  width: 56px; height: 56px; flex: none; border-radius: 6px;
+  background: var(--accent); color: #fff; border: 0; cursor: pointer; font-size: 26px;
+  display: inline-flex; align-items: center; justify-content: center; transition: background .25s;
+}
+.proj-card__add:hover { background: var(--accent-dark); }
+
+.proj-next {
+  position: absolute; right: clamp(16px, 4vw, 60px); bottom: 28px;
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--orange); color: #fff; border: 0; cursor: pointer;
+  font-size: 26px; display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 24px rgba(255,140,0,.35);
+  transition: transform .25s ease, background .25s ease;
+  z-index: 3;
+}
+.proj-next:hover { transform: scale(1.08); }
 
 /* ============================================================
    Responsive

@@ -40,30 +40,33 @@
 
 <p class="lead lead--sm">A small selection of leather restoration, upholstery, marine interior and bespoke furniture projects we have delivered.</p>
 
-<!-- INTRO STRIP -->
-<section class="section" style="padding-bottom:0">
-  <div class="container">
-    <div class="split-text">
-      <div>
-        <h2 class="display" style="font-weight:400;font-size:clamp(28px,3vw,45px);line-height:1.1;margin-bottom:18px">Recent leather, upholstery &amp; joinery projects across the UAE</h2>
-        <p>A small selection of recent work — yacht salons, hotel lounges, private villas and bespoke commissions handled by our Al Quoz workshop.</p>
-        <a class="pill pill--ghost" href="contact.html" style="margin-top:14px">start a project <span class="dot">&rarr;</span></a>
-      </div>
-      <img src="assets/img/luxury-holiday.jpg" alt="Featured project" style="border-radius:8px;width:100%;height:100%;object-fit:cover;min-height:320px">
-    </div>
-  </div>
-</section>
+<!-- PROJECTS — full-screen horizontal scroll gallery -->
+<section class="proj-scroll" aria-label="Recent projects">
+  <div class="proj-track" id="projTrack">
+    <article class="proj-intro">
+      <h2>Recent leather, upholstery &amp; joinery projects across the UAE</h2>
+      <p>A small selection of recent work — yacht salons, hotel lounges, private villas and bespoke commissions handled by our Al Quoz workshop.</p>
+      <a class="pill" href="contact.html">start a project <span class="dot">&rarr;</span></a>
+    </article>
 
-<!-- PROJECTS GRID -->
-<section class="section">
-  <div class="container">
-    <div class="cards-row" style="grid-template-columns:repeat(2,1fr);gap:32px">
-      <a class="svc-card" href="project-detail.html"><img class="svc-card__img" src="assets/img/proj-3.jpg" alt="" style="aspect-ratio:auto;height:420px"><div class="svc-card__bar"><h3>Exquisite Marine Interiors in Dubai Jumeirah</h3><span class="svc-card__add">+</span></div></a>
-      <a class="svc-card" href="project-detail.html"><img class="svc-card__img" src="assets/img/proj-1.jpg" alt="" style="aspect-ratio:auto;height:420px"><div class="svc-card__bar"><h3>Fully Customized Office Upholstery Design</h3><span class="svc-card__add">+</span></div></a>
-      <a class="svc-card" href="project-detail.html"><img class="svc-card__img" src="assets/img/proj-2.jpg" alt="" style="aspect-ratio:auto;height:420px"><div class="svc-card__bar"><h3>Villa Jumeirah delivers joinery</h3><span class="svc-card__add">+</span></div></a>
-      <a class="svc-card" href="project-detail.html"><img class="svc-card__img" src="assets/img/proj-4.jpg" alt="" style="aspect-ratio:auto;height:420px"><div class="svc-card__bar"><h3>Baffles and curve customised sofa furniture</h3><span class="svc-card__add">+</span></div></a>
-    </div>
+    <a class="proj-card" href="project-detail.html">
+      <div class="proj-card__media"><img class="proj-card__img" src="assets/img/proj-3.jpg" alt="Exquisite Marine Interiors in Dubai Jumeirah"></div>
+      <div class="proj-card__bar"><h3>Exquisite Marine Interiors in Dubai Jumeirah</h3><span class="proj-card__add">+</span></div>
+    </a>
+    <a class="proj-card" href="project-detail.html">
+      <div class="proj-card__media"><img class="proj-card__img" src="assets/img/proj-1.jpg" alt="Fully Customized Office Upholstery Design"></div>
+      <div class="proj-card__bar"><h3>Fully Customized Office Upholstery Design</h3><span class="proj-card__add">+</span></div>
+    </a>
+    <a class="proj-card" href="project-detail.html">
+      <div class="proj-card__media"><img class="proj-card__img" src="assets/img/proj-2.jpg" alt="Villa Jumeirah delivers joinery"></div>
+      <div class="proj-card__bar"><h3>Villa Jumeirah delivers joinery</h3><span class="proj-card__add">+</span></div>
+    </a>
+    <a class="proj-card" href="project-detail.html">
+      <div class="proj-card__media"><img class="proj-card__img" src="assets/img/proj-4.jpg" alt="Baffles and curve customised sofa furniture"></div>
+      <div class="proj-card__bar"><h3>Baffles and curve customised sofa furniture</h3><span class="proj-card__add">+</span></div>
+    </a>
   </div>
+  <button class="proj-next" id="projNext" aria-label="Scroll to next project">&rarr;</button>
 </section>
 
 <!-- CTA -->
