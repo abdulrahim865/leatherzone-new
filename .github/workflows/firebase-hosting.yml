@@ -1,0 +1,26 @@
+name: Deploy to Firebase Hosting
+
+# Auto-deploy the site to the v2-leatherzone hosting site whenever
+# changes land on main.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Firebase Hosting (live channel)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_V1_LEATHERZONE }}
+          channelId: live
+          projectId: v1-leatherzone

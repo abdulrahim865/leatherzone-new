@@ -220,6 +220,28 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 .band--tan::before { background: rgba(174,155,128,.95); }
 .band--tan h2 { font-weight: 200; }
 
+/* ---------- Delivering finest industry (band + overlapping cards) ---------- */
+.deliver { background: var(--bg); }
+.deliver__band { padding: 150px 0 220px; }
+.deliver__band .band__inner { position: relative; }
+.deliver__band h2 { font-weight: 500; }
+.deliver__band h2 em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic; font-weight: 400;
+}
+.deliver__band h2 b { font-weight: 700; }
+.plus {
+  position: absolute; color: #fff; opacity: .85;
+  font-family: var(--body); font-weight: 300; font-size: 40px; line-height: 1;
+}
+.plus--a { top: -70px; left: 38%; }
+.plus--b { top: -90px; right: 6%; }
+.deliver__cards {
+  margin-top: -150px; position: relative; z-index: 2;
+  grid-template-columns: repeat(4, 1fr);
+}
+.deliver__cards .cat-card img { height: 240px; }
+
 /* ---------- Sector / category cards row ---------- */
 .cards-row {
   display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px;
@@ -288,7 +310,8 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 
 /* ---------- Gallery (tall images) ---------- */
 .gallery3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
-.gallery3 img { width: 100%; height: 620px; object-fit: cover; border-radius: 4px; }
+.gallery3 .zoom { border-radius: 4px; }
+.gallery3 .zoom img, .gallery3 > img { width: 100%; height: 620px; object-fit: cover; border-radius: 4px; }
 
 /* ---------- Detail table ---------- */
 .spec {
@@ -388,8 +411,8 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
    ============================================================ */
 .svc-card, .cat-card, .stat, .review {
   transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease;
-  will-change: transform;
 }
+.svc-card, .cat-card, .proj-card, .gallery3 .zoom { cursor: pointer; }
 .svc-card:hover, .cat-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 22px 50px rgba(0,0,0,.14);
@@ -398,17 +421,21 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(0,0,0,.12);
 }
-/* image zoom inside cards */
-.svc-card, .cat-card, .split__media, .gallery3 img, .proj-card { overflow: hidden; }
-.svc-card__img, .cat-card img, .split__media img, .gallery3 a > img,
-.proj-card__img {
+/* image zoom — every zoomable image lives in an overflow:hidden box so the
+   scale stays cropped within its container (never grows the layout/overflows) */
+.svc-card, .cat-card, .split__media, .proj-card,
+.proj-card__media, .gallery3 .zoom { overflow: hidden; }
+.svc-card__img, .cat-card img, .split__media img,
+.proj-card__img, .gallery3 .zoom img {
+  display: block;
   transition: transform .6s cubic-bezier(.2,.7,.3,1);
+  transform: scale(1);          /* GPU-stable start, no sub-pixel seams */
+  backface-visibility: hidden;
 }
 .svc-card:hover .svc-card__img,
 .cat-card:hover img,
-.proj-card:hover .proj-card__img { transform: scale(1.07); }
-.gallery3 img { transition: transform .6s cubic-bezier(.2,.7,.3,1); }
-.gallery3 img:hover { transform: scale(1.05); }
+.proj-card:hover .proj-card__img,
+.gallery3 .zoom:hover img { transform: scale(1.06); }
 
 /* links + nav underline grow */
 .footer__nav a { position: relative; }
