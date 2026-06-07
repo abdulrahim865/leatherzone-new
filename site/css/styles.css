@@ -16,7 +16,7 @@
   --gray: #706868;
   --gutter: clamp(20px, 12.7vw, 244px);
   --maxw: 1432px;
-  --display: "Jost", "Segoe UI", sans-serif;
+  --display: "Jost", var(--body);
   --body: "Inter", "Segoe UI", system-ui, sans-serif;
 }
 
@@ -47,6 +47,24 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 
 .display { font-family: var(--display); }
 .accent-text { color: var(--accent); }
+
+/* ---------- Design typography: uppercase display headings ----------
+   The Figma design renders headings, the lead subheading, eyebrows,
+   stat numbers/labels and card titles in UPPERCASE, with selected
+   lowercase italic accents (e.g. "finest", "in Dubai"). */
+.hero h1, .hero__big, .lead,
+.section__title, .band h2, .deliver__band h2, .split__body h2,
+.stat__num, .stat p, .eyebrow,
+.svc-card__bar h3, .cat-card p, .proj-card__bar h3, .proj-intro h2,
+.footer__top h2, .footer__top strong {
+  text-transform: uppercase;
+}
+.hero h1 em, .hero__big em, .lead em,
+.band h2 em, .deliver__band h2 em, .split__body h2 em,
+.section__title em {
+  text-transform: none;
+  font-style: italic;
+}
 
 /* ---------- Header ---------- */
 .site-header {
@@ -177,7 +195,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 /* ---------- Section heading ---------- */
 .section { padding: 70px 0; }
 .section__title {
-  font-family: "Segoe UI", var(--body); font-weight: 600;
+  font-family: var(--body); font-weight: 600;
   font-size: clamp(30px, 3vw, 40px); line-height: 1.2; letter-spacing: -.5px;
 }
 .eyebrow { color: var(--accent-dark); font-weight: 600; letter-spacing: .5px; }
@@ -196,7 +214,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 22px 26px; gap: 16px;
 }
-.svc-card__bar h3 { font-family: "Segoe UI", var(--body); font-weight: 600; font-size: 22px; }
+.svc-card__bar h3 { font-family: var(--body); font-weight: 600; font-size: 22px; }
 .svc-card__add {
   width: 56px; height: 56px; flex: none; border-radius: 4px;
   background: var(--accent); color: #fff; border: 0; cursor: pointer;
@@ -278,7 +296,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   font-family: var(--display); font-weight: 500; color: var(--accent);
   font-size: clamp(48px, 5vw, 80px); line-height: 1; margin-bottom: 24px;
 }
-.stat p { font-family: "Segoe UI", var(--body); font-size: clamp(20px,2vw,30px); line-height: 1.15; color: var(--muted2); margin: 0; }
+.stat p { font-family: var(--body); font-size: clamp(20px,2vw,30px); line-height: 1.15; color: var(--muted2); margin: 0; }
 
 /* ---------- Brand logos grid ---------- */
 .logos {
@@ -336,7 +354,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   background: #0f0f0f; color: #fff; padding: 48px;
   position: relative; display: flex; flex-direction: column; gap: 40px;
 }
-.contact-info h3 { font-family: "Segoe UI", var(--body); font-weight: 600; font-size: 28px; }
+.contact-info h3 { font-family: var(--body); font-weight: 600; font-size: 28px; }
 .contact-info .muted { color: #c9c9c9; font-size: 16px; margin-top: -28px; }
 .contact-info ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 26px; }
 .contact-info li { display: flex; gap: 16px; align-items: flex-start; font-size: 16px; }
@@ -452,6 +470,14 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 /* social icons */
 .socials a { transition: transform .25s ease, background .25s ease; }
 .socials a:hover { transform: translateY(-3px); }
+.socials svg { width: 17px; height: 17px; display: block; }
+
+/* gallery captions (matches design) */
+.gallery3 .g-item { display: flex; flex-direction: column; gap: 14px; }
+.gallery3 .g-cap {
+  margin: 0; font-family: var(--body); font-size: 18px; color: var(--muted2);
+  text-transform: uppercase; letter-spacing: .3px;
+}
 
 /* reveal on scroll (only hides when JS is active, so no-JS keeps content visible) */
 .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
@@ -518,7 +544,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 22px 24px;
 }
-.proj-card__bar h3 { font-family: "Segoe UI", var(--body); font-weight: 600; font-size: 22px; line-height: 1.2; }
+.proj-card__bar h3 { font-family: var(--body); font-weight: 600; font-size: 22px; line-height: 1.2; }
 .proj-card__add {
   width: 56px; height: 56px; flex: none; border-radius: 6px;
   background: var(--accent); color: #fff; border: 0; cursor: pointer; font-size: 26px;
