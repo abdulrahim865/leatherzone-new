@@ -278,6 +278,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   box-shadow: 0 6px 20px rgba(0,0,0,.05);
 }
 .cat-card img { width: 100%; height: 340px; object-fit: cover; }
+article.cat-card { padding: 4px; }
 .cat-card p {
   margin: 0; padding: 22px 14px; text-align: center;
   font-size: 18px; color: var(--muted2); font-family: var(--body);
@@ -320,6 +321,17 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
 
 /* ---------- Testimonials ---------- */
 .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+/* horizontal scrollable testimonials (like the sectors row) */
+.review-scroll {
+  display: flex; gap: 26px; width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.review-scroll::-webkit-scrollbar { display: none; }
+.review-scroll .review { flex: 0 0 auto; width: clamp(300px, 28vw, 440px); scroll-snap-align: start; }
 .review {
   background: #fff; border-radius: 8px; padding: 30px;
   box-shadow: 0 6px 20px rgba(0,0,0,.05);
@@ -506,16 +518,13 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; margin: 0; }
   width: 100%;
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  scroll-padding-left: var(--gutter);
-  padding: 10px var(--gutter) 30px;
+  scroll-padding-left: 0;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE and Edge */
 }
-.sector-scroll::-webkit-scrollbar { height: 8px; }
-.sector-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; }
-.sector-scroll::-webkit-scrollbar-track { background: transparent; }
+.sector-scroll::-webkit-scrollbar { display: none; } /* Chrome, Safari, Opera */
 .sector-item {
   flex: 0 0 auto;
   width: clamp(300px, 30vw, 460px);
